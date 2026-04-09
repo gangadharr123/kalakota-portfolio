@@ -1,0 +1,2 @@
+# Redirect any 404 back to index (SPA fallback — optional for static site)
+/* /index.html 200
