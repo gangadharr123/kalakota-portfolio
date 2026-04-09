@@ -3,35 +3,34 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hema Sai Gangadhar Reddy Kalakota | Cloud & Analytics</title>
-  <meta name="description" content="Business Analytics & Cloud Engineering Portfolio." />
-  
+  <title>Gangadhar Kalakota — Cloud Engineer &amp; Business Analyst</title>
+  <meta name="description" content="MSc Business Analytics (EBS Germany) · Cloud Engineer · Dean's Honour List · 8 Certifications · Available in Germany &amp; Netherlands" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet" />
-  
-  <link rel="stylesheet" href="styles.v2.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
   <script>document.documentElement.classList.add('js-enabled');</script>
 </head>
 <body>
 
-  <!-- Custom Quirky Cursor -->
+  <div class="noise"></div>
   <div class="cursor-dot" id="cursorDot"></div>
 
-  <!-- The Data Pipeline Scroll Hook -->
   <div class="pipeline-container">
     <div class="pipeline-progress" id="pipelineProgress"></div>
   </div>
 
-  <!-- NAVIGATION -->
+  <!-- NAV -->
   <nav class="nav" id="nav">
     <div class="nav-inner">
       <a href="#hero" class="nav-logo">G.K.</a>
       <ul class="nav-links">
-        <li><a href="#about" data-scramble="PROFILE">PROFILE</a></li>
-        <li><a href="#experience" data-scramble="EXPERIENCE">EXPERIENCE</a></li>
-        <li><a href="#education" data-scramble="EDUCATION">EDUCATION</a></li>
-        <li><a href="#skills" data-scramble="EXPERTISE">EXPERTISE</a></li>
+        <li><a href="#about">PROFILE</a></li>
+        <li><a href="#disciplines">EXPERTISE</a></li>
+        <li><a href="#experience">IMPACT</a></li>
+        <li><a href="#education">EDUCATION</a></li>
+        <li><a href="#certifications">CERTS</a></li>
+        <li><a href="#contact">CONTACT</a></li>
         <li><a href="resume.pdf" class="nav-cta" target="_blank">DOWNLOAD CV</a></li>
       </ul>
       <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
@@ -40,66 +39,136 @@
     </div>
   </nav>
 
-  <!-- MOBILE MENU overlay -->
   <div class="mobile-menu" id="mobileMenu">
-    <a href="#about" class="mobile-link">PROFILE</a>
-    <a href="#experience" class="mobile-link">EXPERIENCE</a>
-    <a href="#education" class="mobile-link">EDUCATION</a>
-    <a href="#skills" class="mobile-link">EXPERTISE</a>
-    <a href="resume.pdf" class="mobile-link" style="color: var(--accent)" target="_blank">DOWNLOAD CV</a>
+    <a href="#about" class="mobile-link">Profile</a>
+    <a href="#disciplines" class="mobile-link">Expertise</a>
+    <a href="#experience" class="mobile-link">Impact</a>
+    <a href="#education" class="mobile-link">Education</a>
+    <a href="#certifications" class="mobile-link">Certs</a>
+    <a href="#contact" class="mobile-link">Contact</a>
+    <a href="resume.pdf" class="mobile-link mobile-link-cta" target="_blank">Download CV</a>
   </div>
 
   <!-- HERO -->
   <header class="hero" id="hero">
+    <div class="hero-bg-grid"></div>
     <div class="container">
+
       <div class="reveal">
         <div class="status-badge">
           <div class="status-dot"></div>
-          Available in Germany & NL
+          Available · Germany &amp; Netherlands
         </div>
       </div>
+
+      <div class="hero-eyebrow reveal">Cloud Engineer &nbsp;×&nbsp; Business Analyst &nbsp;×&nbsp; B2 Deutsch</div>
+
       <h1 class="hero-name reveal">
-        <span>HEMA SAI</span>
-        <span class="outline">GANGADHAR REDDY</span>
-        <span class="accent">KALAKOTA</span>
+        <span>GANGADHAR</span>
+        <span class="outline">REDDY</span>
+        <span class="accent-line">KALAKOTA</span>
       </h1>
-      <p class="hero-tagline reveal">
-        Bridging the gap between <strong>business strategy</strong> and <strong>scalable cloud architecture</strong>. 
-        I transform complex data into actionable insights and robust enterprise solutions.
-      </p>
+
+      <div class="hero-body reveal">
+        <p class="hero-tagline">
+          The rare profile that ships production code <em>and</em> reads a P&amp;L.
+          3 years at <strong>Infosys</strong> engineering fraud-detection systems for UK banks —
+          now at <strong>EBS Universität</strong>, Germany, where technology meets strategy.
+        </p>
+        <div class="hero-stats">
+          <div class="h-stat">
+            <span class="h-stat-val count-up" data-target="8">0</span>
+            <span class="h-stat-label">Cloud Certs</span>
+          </div>
+          <div class="h-stat-sep"></div>
+          <div class="h-stat">
+            <span class="h-stat-val">3M+</span>
+            <span class="h-stat-label">Daily Txns Handled</span>
+          </div>
+          <div class="h-stat-sep"></div>
+          <div class="h-stat">
+            <span class="h-stat-val">Top 5%</span>
+            <span class="h-stat-label">SPJIMR Cohort</span>
+          </div>
+        </div>
+      </div>
+
       <div class="hero-actions reveal">
         <a href="#experience" class="btn btn-primary">View My Impact</a>
-        <a href="resume.pdf" target="_blank" class="btn btn-ghost">Download Resume</a>
+        <a href="resume.pdf" target="_blank" class="btn btn-ghost">Download CV</a>
       </div>
     </div>
   </header>
+
+  <!-- MARQUEE -->
+  <div class="marquee-strip" aria-hidden="true">
+    <div class="marquee-track">
+      <span>AWS Lambda</span><span class="dot">·</span>
+      <span>Python</span><span class="dot">·</span>
+      <span>Machine Learning</span><span class="dot">·</span>
+      <span>Google Cloud</span><span class="dot">·</span>
+      <span>Java Microservices</span><span class="dot">·</span>
+      <span>ETL Pipelines</span><span class="dot">·</span>
+      <span>Microsoft Azure</span><span class="dot">·</span>
+      <span>Agile / Scrum</span><span class="dot">·</span>
+      <span>NLP</span><span class="dot">·</span>
+      <span>Jenkins CI/CD</span><span class="dot">·</span>
+      <span>SQL</span><span class="dot">·</span>
+      <span>Financial Crime Detection</span><span class="dot">·</span>
+      <span>Fintech Innovation</span><span class="dot">·</span>
+      <span>Data Visualization</span><span class="dot">·</span>
+      <span>SonarQube</span><span class="dot">·</span>
+      <span>Business Analytics</span><span class="dot">·</span>
+      <span>Design Thinking</span><span class="dot">·</span>
+      <span>AWS Lambda</span><span class="dot">·</span>
+      <span>Python</span><span class="dot">·</span>
+      <span>Machine Learning</span><span class="dot">·</span>
+      <span>Google Cloud</span><span class="dot">·</span>
+      <span>Java Microservices</span><span class="dot">·</span>
+      <span>ETL Pipelines</span><span class="dot">·</span>
+      <span>Microsoft Azure</span><span class="dot">·</span>
+      <span>Agile / Scrum</span><span class="dot">·</span>
+      <span>NLP</span><span class="dot">·</span>
+      <span>Jenkins CI/CD</span><span class="dot">·</span>
+      <span>SQL</span><span class="dot">·</span>
+      <span>Financial Crime Detection</span><span class="dot">·</span>
+      <span>Fintech Innovation</span><span class="dot">·</span>
+      <span>Data Visualization</span><span class="dot">·</span>
+      <span>SonarQube</span><span class="dot">·</span>
+      <span>Business Analytics</span><span class="dot">·</span>
+      <span>Design Thinking</span><span class="dot">·</span>
+    </div>
+  </div>
 
   <!-- ABOUT -->
   <section class="section" id="about">
     <div class="container">
       <div class="section-header reveal">
         <span class="section-label">01</span>
-        <h2 class="section-title scramble-target">Business Meets Technology</h2>
+        <h2 class="section-title scramble-target">The Profile</h2>
       </div>
-      
       <div class="about-grid">
         <div class="about-text reveal">
-          <p class="lead">Operating at the exact intersection of strategic Business Analytics and enterprise Cloud Engineering.</p>
-          <p>Currently pursuing my MSc in Business Analytics at <strong>EBS Universität (Germany)</strong>. My foundation was built at <strong>Infosys</strong>, where I spent nearly 3 years architecting data pipelines and high-security microservices for top-tier UK banking clients.</p>
-          <p>Backed by 8 professional certifications across <strong>Google Cloud</strong>, <strong>AWS</strong>, and <strong>Microsoft Azure</strong>, I don't just write code—I design resilient systems that drive business growth, optimize operations, and solve real-world financial challenges.</p>
+          <p class="lead">I'm the person who can explain a microservices architecture to a VP — and build it by Friday.</p>
+          <p>After 2.75 years at <strong>Infosys</strong> engineering fintech systems that process millions of bank transactions daily, I chose to deepen the business side at <strong>SPJIMR Mumbai</strong> — graduating on the <strong>Dean's Honour List (Top 5%)</strong> — before joining <strong>EBS Universität</strong> in Germany's Rheingau for an MSc in Business Analytics.</p>
+          <p>My edge: I don't translate between tech and business. I speak both fluently.</p>
+          <p>German B2. Four languages total. Based in Eltville am Rhein — 30 min from Frankfurt.</p>
         </div>
-        
         <div class="stats-container reveal">
           <div class="stat-box">
-            <span class="stat-val">8</span>
+            <span class="stat-val count-up" data-target="8">0</span>
             <span class="stat-desc">Cloud Certifications</span>
           </div>
           <div class="stat-box">
-            <span class="stat-val">30+</span>
-            <span class="stat-desc">Incidents Resolved</span>
+            <span class="stat-val count-up" data-target="30" data-suffix="+">0</span>
+            <span class="stat-desc">Critical Incidents Resolved</span>
           </div>
-          <div class="stat-box" style="grid-column: 1 / -1;">
-            <span class="stat-val">2M+</span>
+          <div class="stat-box">
+            <span class="stat-val count-up" data-target="40" data-suffix="%">0</span>
+            <span class="stat-desc">DB Query Time Reduced</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-val">3M+</span>
             <span class="stat-desc">Daily Transactions Handled</span>
           </div>
         </div>
@@ -107,15 +176,51 @@
     </div>
   </section>
 
-  <!-- EXPERIENCE -->
-  <section class="section section-dark" id="experience">
+  <!-- DISCIPLINES -->
+  <section class="section section-dark" id="disciplines">
     <div class="container">
       <div class="section-header reveal">
         <span class="section-label">02</span>
+        <h2 class="section-title scramble-target">What I Do</h2>
+      </div>
+      <div class="pillars-grid">
+        <div class="pillar reveal">
+          <div class="pillar-num">01</div>
+          <h3 class="pillar-title">Cloud Architecture</h3>
+          <p class="pillar-desc">Designing event-driven, highly-available systems on AWS, GCP, and Azure. Certified at professional level on all three. Real-world: fintech ETL pipelines processing 3M+ transactions daily for a UK bank.</p>
+          <div class="pillar-tags">
+            <span class="tag">AWS</span><span class="tag">GCP</span><span class="tag">Azure</span><span class="tag">Serverless</span><span class="tag">ETL</span>
+          </div>
+        </div>
+        <div class="pillar reveal" style="transition-delay:0.1s">
+          <div class="pillar-num">02</div>
+          <h3 class="pillar-title">Engineering &amp; DevOps</h3>
+          <p class="pillar-desc">20+ production APIs, Java microservices, CI/CD pipelines that cut release cycles from days to minutes. Security-by-design with SonarQube &amp; Veracode — zero critical vulnerabilities shipped.</p>
+          <div class="pillar-tags">
+            <span class="tag">Java</span><span class="tag">Python</span><span class="tag">Jenkins</span><span class="tag">Microservices</span><span class="tag">Angular</span>
+          </div>
+        </div>
+        <div class="pillar reveal" style="transition-delay:0.2s">
+          <div class="pillar-num">03</div>
+          <h3 class="pillar-title">Business Analytics</h3>
+          <p class="pillar-desc">ML, NLP, Econometrics, Fintech Innovation — MSc-level rigor applied to real business problems. Harvard Business Publishing curriculum: Corporate Finance, Design Thinking, Digital Product Management.</p>
+          <div class="pillar-tags">
+            <span class="tag">Machine Learning</span><span class="tag">NLP</span><span class="tag">Econometrics</span><span class="tag">Fintech</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="section" id="experience">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">03</span>
         <h2 class="section-title scramble-target">Professional Impact</h2>
       </div>
-
       <div class="timeline">
+
         <div class="timeline-item reveal">
           <div class="timeline-meta">
             <span class="timeline-date">Jul '24 — Dec '24</span>
@@ -125,14 +230,14 @@
           </div>
           <div class="timeline-content">
             <h3 class="timeline-role">Senior Systems Engineer</h3>
-            <div class="timeline-company">Financial Crime Dept // UK Banking</div>
+            <div class="timeline-company">Financial Crime Dept · UK Banking · Infosys</div>
             <ul class="impact-list">
-              <li>Engineered event-driven <strong>AWS ETL pipelines</strong> processing millions of transactions daily, replacing manual legacy systems to boost efficiency.</li>
-              <li>Deployed real-time data validation systems using Python and AWS, ensuring high data integrity for critical financial operations.</li>
-              <li>Increased system observability by 60% by designing automated alerting systems, significantly reducing downtime.</li>
+              <li>Engineered <strong>event-driven AWS ETL pipeline</strong> (Lambda → SQS → Glue → SNS) replacing a manual batch process — serving a SaaS platform at 2–3 million transactions per day.</li>
+              <li>Authored Python Lambda functions for transformation and validation; integrated SNS for a robust alerting system ensuring full pipeline observability.</li>
+              <li>Owned full Agile/Scrum SDLC: requirements gathering, system design, implementation, testing, deployment.</li>
             </ul>
             <div class="timeline-tags">
-              <span class="tag">AWS Lambda</span><span class="tag">Python</span><span class="tag">Glue</span><span class="tag">SQS</span><span class="tag">SNS</span>
+              <span class="tag">AWS Lambda</span><span class="tag">Python</span><span class="tag">AWS Glue</span><span class="tag">SQS</span><span class="tag">SNS</span><span class="tag">Agile</span>
             </div>
           </div>
         </div>
@@ -146,44 +251,51 @@
           </div>
           <div class="timeline-content">
             <h3 class="timeline-role">Systems Engineer</h3>
-            <div class="timeline-company">Fraud Detection Platform</div>
+            <div class="timeline-company">Non-Plastic Fraud Detection · UK Banking · Infosys</div>
             <ul class="impact-list">
-              <li>Developed 20+ robust Java microservices with rigorous <strong>Security by Design</strong> principles, protecting sensitive customer data.</li>
-              <li>Optimized core database queries, reducing production fraud API latency by 40% and improving the end-user experience.</li>
-              <li>Automated multi-stage <strong>CI/CD</strong> deployment pipelines, accelerating the delivery of new features to market.</li>
+              <li>Built and maintained <strong>20+ middleware APIs and Java microservices</strong> for a UK bank's fraud detection platform — Security by Design with SonarQube &amp; Veracode.</li>
+              <li>Created an internal real-time monitoring tool tracking API response times across 20+ endpoints — reduced mean time to detect production incidents from hours to minutes.</li>
+              <li>Resolved <strong>30+ critical production incidents</strong>; database optimisation alone cut average query response time by ~40%.</li>
+              <li>Conducted IT Impact Assessments for architectural changes across microservices, data pipelines, and NFRs.</li>
+              <li>Automated CI/CD via Jenkins &amp; Angular — eliminated manual deployment steps entirely.</li>
             </ul>
             <div class="timeline-tags">
-              <span class="tag">Java</span><span class="tag">Microservices</span><span class="tag">Angular</span><span class="tag">Jenkins</span><span class="tag">SonarQube</span>
+              <span class="tag">Java</span><span class="tag">Microservices</span><span class="tag">Angular</span><span class="tag">Jenkins</span><span class="tag">SonarQube</span><span class="tag">Veracode</span>
             </div>
           </div>
         </div>
+
       </div>
     </div>
   </section>
 
   <!-- EDUCATION -->
-  <section class="section" id="education">
+  <section class="section section-dark" id="education">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-label">03</span>
+        <span class="section-label">04</span>
         <h2 class="section-title scramble-target">Academic Journey</h2>
       </div>
-
       <div class="timeline">
+
         <div class="timeline-item reveal">
           <div class="timeline-meta">
-            <span class="timeline-date">2025 — Expected 2026</span>
+            <span class="timeline-date">Aug 2025 — Jul 2026</span>
             <div class="timeline-logo">
-              <img src="images/ebs_universitt_fr_wirtschaft_und_recht_logo.jpeg" alt="EBS">
+              <img src="images/ebs_universitt_fr_wirtschaft_und_recht_logo.jpeg" alt="EBS Universität">
             </div>
           </div>
           <div class="timeline-content">
             <h3 class="timeline-role">MSc Business Analytics</h3>
-            <div class="timeline-company">EBS Universität für Wirtschaft und Recht</div>
+            <div class="timeline-company">EBS Universität für Wirtschaft und Recht · Oestrich-Winkel, Germany</div>
             <ul class="impact-list">
-              <li>Specialization: Machine Learning, NLP, Fintech Innovation & Asset Management.</li>
-              <li>Bridging advanced data science techniques with strategic business applications.</li>
+              <li>Statistics, Data Visualization, Data Structures &amp; Databases, Econometrics, Fintech Innovation.</li>
+              <li>Machine Learning, Natural Language Processing, Asset Management — quantitative methods for financial applications.</li>
+              <li>Thesis expected July 2026 · GPA 2.2 (German scale).</li>
             </ul>
+            <div class="timeline-tags">
+              <span class="tag">GPA 2.2 DE</span><span class="tag">Machine Learning</span><span class="tag">NLP</span><span class="tag">Fintech</span><span class="tag">Econometrics</span>
+            </div>
           </div>
         </div>
 
@@ -195,113 +307,226 @@
             </div>
           </div>
           <div class="timeline-content">
+            <div class="honour-badge">
+              <span>★</span> Dean's Honour List · Top 5% of Cohort
+            </div>
             <h3 class="timeline-role">Global Management Programme</h3>
-            <div class="timeline-company">SPJIMR Mumbai</div>
+            <div class="timeline-company">SPJIMR Mumbai · Harvard Business Publishing Curriculum</div>
             <ul class="impact-list">
-              <li>Status: Top 5% of Cohort / Dean's Honour List (CGPA: 3.22/4.0).</li>
-              <li>Focus: Strategic Management, Digital Transformation, Corporate Finance.</li>
+              <li><strong>Certificate of Merit — Dean's Honour List</strong> · CGPA 3.22/4.0 · Batch 21.</li>
+              <li>Corporate Finance, Strategic Management, Operations &amp; Supply Chain, Design Thinking, Digital Product Management.</li>
+              <li>PMI Certificate in Project Management (24 PDUs) — July 2025.</li>
+              <li>German A1 → A2 completed during programme.</li>
             </ul>
+            <div class="timeline-tags">
+              <span class="tag">CGPA 3.22/4.0</span><span class="tag">Top 5%</span><span class="tag">PMI Certified</span><span class="tag">Dean's List</span>
+            </div>
           </div>
         </div>
 
         <div class="timeline-item reveal">
           <div class="timeline-meta">
             <span class="timeline-date">2015 — 2021</span>
-            <div class="timeline-logo">
-              <img src="https://www.mvgrce.edu.in/sites/default/files/logo.png" alt="MVGR">
-            </div>
+            <div class="timeline-logo-text">MVGR</div>
           </div>
           <div class="timeline-content">
             <h3 class="timeline-role">B.Tech Information Technology</h3>
-            <div class="timeline-company">MVGR College of Engineering</div>
+            <div class="timeline-company">MVGR College of Engineering · Vizianagaram, India</div>
             <ul class="impact-list">
-              <li>Focus: Object-Oriented Programming, Data Structures, Software Architecture.</li>
-              <li>Graduated with a CGPA of 6.16/10.</li>
+              <li>Penetration Testing, Cryptography &amp; Information Security — security fundamentals that shaped production work at Infosys.</li>
+              <li>Data Structures, Software Architecture, OOP, DBMS, Operating Systems, Web Technologies.</li>
             </ul>
+            <div class="timeline-tags">
+              <span class="tag">Security</span><span class="tag">OOP</span><span class="tag">Databases</span><span class="tag">Algorithms</span>
+            </div>
           </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section class="section" id="certifications">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">05</span>
+        <h2 class="section-title scramble-target">8 Certifications</h2>
+      </div>
+      <div class="cert-grid">
+
+        <div class="cert-card reveal">
+          <div class="cert-logo"><img src="images/google_cloud_logo_icon_170066.png" alt="GCP"></div>
+          <div class="cert-body">
+            <div class="cert-provider">Google Cloud</div>
+            <div class="cert-name">Professional Cloud Architect</div>
+            <div class="cert-meta">Issued Mar 2023</div>
+          </div>
+          <div class="cert-badge pro">PRO</div>
+        </div>
+
+        <div class="cert-card reveal" style="transition-delay:.05s">
+          <div class="cert-logo"><img src="images/google_cloud_logo_icon_170066.png" alt="GCP"></div>
+          <div class="cert-body">
+            <div class="cert-provider">Google Cloud</div>
+            <div class="cert-name">Professional Data Engineer</div>
+            <div class="cert-meta">Issued Mar 2023</div>
+          </div>
+          <div class="cert-badge pro">PRO</div>
+        </div>
+
+        <div class="cert-card reveal" style="transition-delay:.1s">
+          <div class="cert-logo"><img src="images/google_cloud_logo_icon_170066.png" alt="GCP"></div>
+          <div class="cert-body">
+            <div class="cert-provider">Google Cloud</div>
+            <div class="cert-name">Professional ML Engineer</div>
+            <div class="cert-meta">Issued Jun 2023</div>
+          </div>
+          <div class="cert-badge pro">PRO</div>
+        </div>
+
+        <div class="cert-card reveal" style="transition-delay:.15s">
+          <div class="cert-logo"><img src="images/google_cloud_logo_icon_170066.png" alt="GCP"></div>
+          <div class="cert-body">
+            <div class="cert-provider">Google Cloud</div>
+            <div class="cert-name">Associate Cloud Engineer</div>
+            <div class="cert-meta">Issued Feb 2023 · Valid to Feb 2026</div>
+          </div>
+          <div class="cert-badge assoc">ACE</div>
+        </div>
+
+        <div class="cert-card reveal" style="transition-delay:.2s">
+          <div class="cert-logo"><img src="images/Amazon_Web_Services-Logo.wine.png" alt="AWS"></div>
+          <div class="cert-body">
+            <div class="cert-provider">Amazon Web Services</div>
+            <div class="cert-name">Solutions Architect Associate</div>
+            <div class="cert-meta">Issued Nov 2023 · Valid to Nov 2026</div>
+          </div>
+          <div class="cert-badge assoc">SAA</div>
+        </div>
+
+        <div class="cert-card reveal" style="transition-delay:.25s">
+          <div class="cert-logo"><img src="images/Microsoft-logo_rgb_c-wht-1536x688.png" alt="Azure"></div>
+          <div class="cert-body">
+            <div class="cert-provider">Microsoft Azure</div>
+            <div class="cert-name">Azure AI Fundamentals</div>
+            <div class="cert-meta">Issued Sep 2022</div>
+          </div>
+          <div class="cert-badge fund">AI-900</div>
+        </div>
+
+        <div class="cert-card reveal" style="transition-delay:.3s">
+          <div class="cert-logo"><img src="images/Microsoft-logo_rgb_c-wht-1536x688.png" alt="Azure"></div>
+          <div class="cert-body">
+            <div class="cert-provider">Microsoft Azure</div>
+            <div class="cert-name">Azure Fundamentals</div>
+            <div class="cert-meta">Issued Nov 2022</div>
+          </div>
+          <div class="cert-badge fund">AZ-900</div>
+        </div>
+
+        <div class="cert-card reveal" style="transition-delay:.35s">
+          <div class="cert-logo"><img src="images/Microsoft-logo_rgb_c-wht-1536x688.png" alt="Azure"></div>
+          <div class="cert-body">
+            <div class="cert-provider">Microsoft Azure</div>
+            <div class="cert-name">Azure Data Fundamentals</div>
+            <div class="cert-meta">Issued Nov 2022</div>
+          </div>
+          <div class="cert-badge fund">DP-900</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- LANGUAGES -->
+  <section class="section section-dark" id="languages">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">06</span>
+        <h2 class="section-title scramble-target">Languages</h2>
+      </div>
+      <div class="lang-grid">
+        <div class="lang-item reveal">
+          <div class="lang-top">
+            <span class="lang-name">English</span>
+            <span class="lang-level">C2 · Fluent</span>
+          </div>
+          <div class="lang-bar"><div class="lang-fill" style="--fill:100%"></div></div>
+        </div>
+        <div class="lang-item reveal" style="transition-delay:.05s">
+          <div class="lang-top">
+            <span class="lang-name">German <em>Deutsch</em></span>
+            <span class="lang-level accent-level">B2 · Upper Intermediate</span>
+          </div>
+          <div class="lang-bar"><div class="lang-fill accent-fill" style="--fill:72%"></div></div>
+          <div class="lang-note">Formally studied A1 → B2 · Actively used in Germany daily</div>
+        </div>
+        <div class="lang-item reveal" style="transition-delay:.1s">
+          <div class="lang-top">
+            <span class="lang-name">Hindi</span>
+            <span class="lang-level">C2 · Fluent</span>
+          </div>
+          <div class="lang-bar"><div class="lang-fill" style="--fill:100%"></div></div>
+        </div>
+        <div class="lang-item reveal" style="transition-delay:.15s">
+          <div class="lang-top">
+            <span class="lang-name">Telugu</span>
+            <span class="lang-level">Native</span>
+          </div>
+          <div class="lang-bar"><div class="lang-fill" style="--fill:100%"></div></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SKILLS & CERTS -->
-  <section class="section section-dark" id="skills">
+  <!-- VOLUNTEER -->
+  <section class="section volunteer-section">
     <div class="container">
-      <div class="section-header reveal">
-        <span class="section-label">04</span>
-        <h2 class="section-title scramble-target">Core Competencies</h2>
-      </div>
-
-      <div class="bento-container reveal">
-        <div class="bento-card">
-          <h3 style="font-family:var(--font-display); font-size:1.5rem; margin-bottom:1rem;">Cloud & DevOps</h3>
-          <div class="timeline-tags">
-            <span class="tag">AWS</span><span class="tag">GCP</span><span class="tag">Azure</span><span class="tag">Terraform</span><span class="tag">Jenkins</span>
-          </div>
+      <div class="volunteer-card reveal">
+        <div class="volunteer-icon">♥</div>
+        <div>
+          <h3 class="volunteer-title">Make A Difference · Education Support Volunteer</h3>
+          <p class="volunteer-desc">May 2022 — June 2024 · Mentored underprivileged students in academic and personal development programmes across India.</p>
         </div>
-        <div class="bento-card">
-          <h3 style="font-family:var(--font-display); font-size:1.5rem; margin-bottom:1rem;">Data & Engineering</h3>
-          <div class="timeline-tags">
-            <span class="tag">Python</span><span class="tag">Java</span><span class="tag">SQL</span><span class="tag">Machine Learning</span><span class="tag">ETL</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="bento-container" style="margin-top: 2rem;">
-        
-        <div class="bento-card reveal">
-          <div class="cert-icon"><img src="images/google_cloud_logo_icon_170066.png" alt="GCP"></div>
-          <h4 style="font-family:var(--font-display); font-size:1.2rem; margin-bottom:0.5rem;">Google Cloud</h4>
-          <p style="color:var(--text-muted); font-size:0.9rem;">Professional Cloud Architect<br>Professional Data Engineer<br>Machine Learning Engineer</p>
-        </div>
-
-        <div class="bento-card reveal" style="transition-delay: 0.1s;">
-          <div class="cert-icon"><img src="images/Amazon_Web_Services-Logo.wine.png" alt="AWS"></div>
-          <h4 style="font-family:var(--font-display); font-size:1.2rem; margin-bottom:0.5rem;">Amazon Web Services</h4>
-          <p style="color:var(--text-muted); font-size:0.9rem;">Solutions Architect Associate</p>
-        </div>
-
-        <div class="bento-card reveal" style="transition-delay: 0.2s;">
-          <div class="cert-icon"><img src="images/Microsoft-logo_rgb_c-wht-1536x688.png" alt="Azure"></div>
-          <h4 style="font-family:var(--font-display); font-size:1.2rem; margin-bottom:0.5rem;">Microsoft Azure</h4>
-          <p style="color:var(--text-muted); font-size:0.9rem;">AI Fundamentals<br>Data Fundamentals<br>Azure Fundamentals</p>
-        </div>
-
-        <div class="bento-card reveal" style="transition-delay: 0.3s;">
-          <div class="cert-icon"><div class="icon-pmi">P</div></div>
-          <h4 style="font-family:var(--font-display); font-size:1.2rem; margin-bottom:0.5rem;">PMI Institute</h4>
-          <p style="color:var(--text-muted); font-size:0.9rem;">Project Management Certificate</p>
-        </div>
-
       </div>
     </div>
   </section>
 
   <!-- CONTACT -->
-  <section class="section" id="contact" style="padding-bottom: 0; border-bottom: none;">
+  <section class="section contact-section" id="contact">
     <div class="container">
-      <div class="section-header reveal" style="margin-bottom: 3rem;">
-        <span class="section-label">05</span>
+      <div class="section-header reveal">
+        <span class="section-label">07</span>
         <h2 class="section-title scramble-target">Let's Connect</h2>
       </div>
-      <p class="reveal" style="font-size:1.2rem; color:var(--text-muted); max-width:600px; margin-bottom: 3rem;">
-        Currently based in Eltville am Rhein, Germany. Open to roles where high-availability engineering meets data-driven business strategy.
+      <p class="contact-intro reveal">
+        Based in Eltville am Rhein, Germany — 30 min from Frankfurt.<br>
+        Open to roles in Cloud, Data Engineering, or Business Analytics across Germany &amp; Netherlands.
       </p>
-
       <div class="contact-grid reveal">
         <a href="mailto:gangadharr123@gmail.com" class="contact-link">
           <div class="contact-icon">✉</div>
-          <div class="contact-label">Send Email</div>
-        </a>
-        <a href="https://linkedin.com/in/gangadharr123" target="_blank" class="contact-link">
-          <div class="contact-icon">in</div>
-          <div class="contact-label">View LinkedIn</div>
-        </a>
-        <a href="https://wa.me/4915212237956" target="_blank" class="contact-link">
-          <div class="contact-icon">
-            <svg viewBox="0 0 24 24"><path d="M12.031 2C6.511 2 2.021 6.49 2.021 12.01C2.021 13.77 2.481 15.43 3.291 16.89L2 22L7.251 20.62C8.651 21.39 10.251 21.81 12.031 21.81C17.551 21.81 22.041 17.32 22.041 11.8C22.041 6.28 17.551 1.79 12.031 1.79V2ZM18.101 15.53C17.851 16.23 16.751 16.81 16.011 16.97C15.501 17.08 14.831 17.16 12.591 16.23C9.721 15.04 7.871 12.12 7.731 11.93C7.591 11.74 6.561 10.37 6.561 8.95C6.561 7.53 7.281 6.84 7.571 6.55C7.801 6.32 8.181 6.2 8.541 6.2C8.661 6.2 8.771 6.21 8.871 6.21C9.161 6.22 9.311 6.24 9.501 6.7C9.741 7.28 10.321 8.7 10.391 8.85C10.461 9 10.531 9.2 10.431 9.4C10.331 9.6 10.251 9.7 10.101 9.88C9.951 10.06 9.811 10.21 9.661 10.39C9.521 10.55 9.361 10.72 9.541 11.03C9.721 11.33 10.341 12.35 11.251 13.16C12.421 14.2 13.391 14.53 13.721 14.67C13.971 14.77 14.271 14.75 14.451 14.55C14.681 14.29 14.961 13.89 15.251 13.48C15.451 13.19 15.711 13.15 15.981 13.25C16.251 13.35 17.691 14.06 17.991 14.21C18.291 14.36 18.491 14.44 18.561 14.56C18.631 14.68 18.631 15.26 18.381 15.96L18.101 15.53Z"/></svg>
+          <div class="contact-info">
+            <div class="contact-label">Email</div>
+            <div class="contact-val">gangadharr123@gmail.com</div>
           </div>
-          <div class="contact-label">Message Me</div>
+        </a>
+        <a href="https://linkedin.com/in/gangadharr123" target="_blank" rel="noopener" class="contact-link">
+          <div class="contact-icon">in</div>
+          <div class="contact-info">
+            <div class="contact-label">LinkedIn</div>
+            <div class="contact-val">gangadharr123</div>
+          </div>
+        </a>
+        <a href="https://wa.me/4915212237956" target="_blank" rel="noopener" class="contact-link">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </div>
+          <div class="contact-info">
+            <div class="contact-label">WhatsApp</div>
+            <div class="contact-val">+49 152 12237956</div>
+          </div>
         </a>
       </div>
     </div>
@@ -314,12 +539,12 @@
         <span>© 2026 Hema Sai Gangadhar Reddy Kalakota</span>
         <div class="footer-links">
           <a href="#">Impressum</a>
-          <a href="#">Privacy Policy</a>
+          <a href="#">Datenschutz</a>
         </div>
       </div>
     </div>
   </footer>
 
-  <script src="script.v2.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
