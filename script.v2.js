@@ -135,4 +135,51 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // ── 8. TYPEWRITER EFFECT FOR HERO NAME ─────────────────────────
+  const heroNameSpans = document.querySelectorAll('.hero-name span');
+  if (heroNameSpans.length > 0) {
+    const lines = Array.from(heroNameSpans).map(span => {
+      const text = span.textContent.trim();
+      span.textContent = '\u200B'; // Zero-width space to keep height
+      return { element: span, text: text };
+    });
+
+    let currentLine = 0;
+    let currentChar = 0;
+    const typingSpeed = 80; // ms per char
+
+    function typeLine() {
+      if (currentLine < lines.length) {
+        const line = lines[currentLine];
+        
+        if (!line.element.classList.contains('typing-cursor')) {
+          line.element.classList.add('typing-cursor');
+        }
+
+        if (currentChar === 0) {
+          line.element.textContent = ''; // clear zero-width space
+        }
+        
+        if (currentChar < line.text.length) {
+          line.element.textContent += line.text.charAt(currentChar);
+          currentChar++;
+          setTimeout(typeLine, typingSpeed);
+        } else {
+          line.element.classList.remove('typing-cursor');
+          currentLine++;
+          currentChar = 0;
+          
+          if (currentLine >= lines.length) {
+            line.element.classList.add('typing-cursor');
+          }
+          
+          setTimeout(typeLine, typingSpeed * 4); // Pause between lines
+        }
+      }
+    }
+
+    // Start typing slightly after the reveal animation begins
+    setTimeout(typeLine, 600); 
+  }
+
 });
