@@ -21,102 +21,57 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   function animateMesh() {
-    // Smooth lerp for the glow movement
     glowX += (mouseX - glowX) * 0.05;
     glowY += (mouseY - glowY) * 0.05;
     
-    meshGlow.style.transform = `translate(${glowX - window.innerWidth/3}px, ${glowY - window.innerHeight/3}px)`;
+    if (meshGlow) {
+      meshGlow.style.transform = `translate(${glowX - window.innerWidth/2}px, ${glowY - window.innerHeight/2}px)`;
+    }
     requestAnimationFrame(animateMesh);
   }
   animateMesh();
 
-  // ── 2. REVEAL ON SCROLL (Sophisticated) ──────────────────────────
-  const revealOptions = {
-    threshold: 0.15,
-    rootMargin: '0px 0px -50px 0px'
-  };
-
+  // ── 2. REVEAL ON SCROLL ──────────────────────────
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
-        // Optional: unobserve if you only want it to reveal once
-        // revealObserver.unobserve(entry.target);
       }
     });
-  }, revealOptions);
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-  document.querySelectorAll('.reveal').forEach((el, index) => {
-    // Add staggered delay to children within the same section
-    const parent = el.closest('section');
-    const siblings = Array.from(parent ? parent.querySelectorAll('.reveal') : []);
-    const delay = siblings.indexOf(el) * 0.1;
-    el.style.transitionDelay = `${delay}s`;
+  document.querySelectorAll('.reveal').forEach((el) => {
     revealObserver.observe(el);
   });
 
-  // ── 3. MAGNETIC BUTTONS (Micro-interaction) ─────────────────────
-  const magneticBtns = document.querySelectorAll('.btn, .nav-logo, .nav-links a');
-  
-  magneticBtns.forEach(btn => {
-    btn.addEventListener('mousemove', (e) => {
-      const rect = btn.getBoundingClientRect();
-      const x = e.clientX - rect.left - rect.width / 2;
-      const y = e.clientY - rect.top - rect.height / 2;
-      
-      btn.style.transform = `translate(${x * 0.2}px, ${y * 0.3}px)`;
-    });
-
-    btn.addEventListener('mouseleave', () => {
-      btn.style.transform = `translate(0px, 0px)`;
-    });
-  });
-
-  // ── 4. NAV SCROLL STATE ──────────────────────────────────────────
-  const nav = document.getElementById('nav');
+  // ── 3. MOBILE MENU ──────────────────────────────────────────
   const navToggle = document.getElementById('navToggle');
   const mobileMenu = document.getElementById('mobileMenu');
   const mobileLinks = document.querySelectorAll('.mobile-link');
 
-  navToggle.addEventListener('click', () => {
-    mobileMenu.classList.toggle('open');
-    navToggle.classList.toggle('active');
-  });
-
-  mobileLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      mobileMenu.classList.remove('open');
-      navToggle.classList.remove('active');
+  if (navToggle && mobileMenu) {
+    navToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('open');
+      navToggle.classList.toggle('active');
     });
-  });
 
-  const handleScroll = () => {
-    if (window.scrollY > 50) {
-      nav.classList.add('scrolled');
-    } else {
-      nav.classList.remove('scrolled');
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+        navToggle.classList.remove('active');
+      });
+    });
+  }
+
+  // ── 4. NAV SCROLL STATE ──────────────────────────────────────────
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    if (nav) {
+      nav.classList.toggle('scrolled', window.scrollY > 50);
     }
-  };
-  window.addEventListener('scroll', handleScroll, { passive: true });
+  }, { passive: true });
 
-  // ── 5. SMOOTH ANCHOR LINKS ──────────────────────────────────────
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      e.preventDefault();
-      const targetId = this.getAttribute('href');
-      if (targetId === '#') return;
-      
-      const target = document.querySelector(targetId);
-      if (target) {
-        window.scrollTo({
-          top: target.offsetTop - 80,
-          behavior: 'smooth'
-        });
-      }
-    });
-  });
-
-  // ── 6. TYPING EFFECT ──────────────────────────────────────────────
+  // ── 5. TYPING EFFECT ──────────────────────────────────────────────
   const typeTarget = document.getElementById('typewriter');
   if (typeTarget) {
     const lines = [
@@ -140,18 +95,35 @@ document.addEventListener('DOMContentLoaded', () => {
         if (charIdx < lines[lineIdx].text.length) {
           currentEl.textContent += lines[lineIdx].text.charAt(charIdx);
           charIdx++;
-          setTimeout(type, 60 + Math.random() * 50);
+          setTimeout(type, 50 + Math.random() * 40);
         } else {
           if (lineIdx < lines.length - 1) {
             typeTarget.appendChild(document.createElement('br'));
           }
           lineIdx++;
           charIdx = 0;
-          setTimeout(type, 300);
+          setTimeout(type, 250);
         }
       }
     }
-    setTimeout(type, 500);
+    setTimeout(type, 800);
   }
+
+  // ── 6. SMOOTH ANCHOR LINKS ──────────────────────────────────────
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+      if (targetId === '#') return;
+      
+      const target = document.querySelector(targetId);
+      if (target) {
+        e.preventDefault();
+        window.scrollTo({
+          top: target.offsetTop - 80,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
 
 });
