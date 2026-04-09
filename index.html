@@ -11,9 +11,38 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet" />
   
   <link rel="stylesheet" href="styles.v2.css" />
-  <script>document.documentElement.classList.add('js-enabled');</script>
+  <script>
+    document.documentElement.classList.add('js-enabled');
+    if (localStorage.getItem('theme') === 'light' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+  </script>
 </head>
 <body>
+
+  <!-- SYSTEM BOOT LOADER -->
+  <div id="bootLoader" class="boot-loader">
+    <div class="boot-terminal">
+      <p id="bootText1" class="boot-line"></p>
+      <p id="bootText2" class="boot-line"></p>
+      <p id="bootText3" class="boot-line"></p>
+      <p id="bootText4" class="boot-line"></p>
+      <p id="bootText5" class="boot-line"></p>
+      <div class="boot-cursor-line"><span class="term-prompt">root@server:~#</span><span class="term-cursor">|</span></div>
+    </div>
+  </div>
+
+
+  <!-- Architect Grid Background -->
+  <div class="bg-grid" id="bgGrid"></div>
+
+  <!-- Cinematic Marquee -->
+  <div class="marquee-container">
+    <div class="marquee-content" id="scrollMarquee">
+      <span>CLOUD ARCHITECTURE • BUSINESS ANALYTICS • DATA ENGINEERING • </span>
+      <span>CLOUD ARCHITECTURE • BUSINESS ANALYTICS • DATA ENGINEERING • </span>
+    </div>
+  </div>
 
   <!-- Custom Quirky Cursor -->
   <div class="cursor-dot" id="cursorDot"></div>
@@ -26,14 +55,24 @@
   <!-- NAVIGATION -->
   <nav class="nav" id="nav">
     <div class="nav-inner">
-      <a href="#hero" class="nav-logo">G.K.</a>
+      <a href="#hero" class="nav-logo magnetic">G.K.</a>
       <ul class="nav-links">
         <li><a href="#about" data-scramble="PROFILE">PROFILE</a></li>
         <li><a href="#experience" data-scramble="EXPERIENCE">EXPERIENCE</a></li>
+                <li><a href="#projects" data-scramble="PROJECTS">PROJECTS</a></li>
         <li><a href="#education" data-scramble="EDUCATION">EDUCATION</a></li>
         <li><a href="#skills" data-scramble="EXPERTISE">EXPERTISE</a></li>
-        <li><a href="resume.pdf" class="nav-cta" target="_blank">DOWNLOAD CV</a></li>
+        <li><a href="resume.pdf" class="nav-cta magnetic" target="_blank">DOWNLOAD CV</a></li>
       </ul>
+      <div class="nav-utilities" style="display: flex; gap: 1rem; align-items: center; margin-left: 2rem;">
+        <button class="icon-btn" id="themeToggle" aria-label="Toggle theme">
+          <svg class="moon-icon" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          <svg class="sun-icon" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        </button>
+        <button class="cmd-btn" id="cmdToggleBtn" aria-label="Command Palette">
+          ⌘K
+        </button>
+      </div>
       <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
         <span></span><span></span><span></span>
       </button>
@@ -44,6 +83,7 @@
   <div class="mobile-menu" id="mobileMenu">
     <a href="#about" class="mobile-link">PROFILE</a>
     <a href="#experience" class="mobile-link">EXPERIENCE</a>
+    <a href="#projects" class="mobile-link">PROJECTS</a>
     <a href="#education" class="mobile-link">EDUCATION</a>
     <a href="#skills" class="mobile-link">EXPERTISE</a>
     <a href="resume.pdf" class="mobile-link" style="color: var(--accent)" target="_blank">DOWNLOAD CV</a>
@@ -53,9 +93,9 @@
   <header class="hero" id="hero">
     <div class="container">
       <div class="reveal">
-        <div class="status-badge">
+        <div class="status-badge" id="liveStatus">
           <div class="status-dot"></div>
-          Available in Germany
+          <span id="liveStatusText">Available in Germany</span>
         </div>
       </div>
       <h1 class="hero-name reveal">
@@ -64,12 +104,11 @@
         <span class="accent">KALAKOTA</span>
       </h1>
       <p class="hero-tagline reveal">
-        Bridging the gap between <strong>business strategy</strong> and <strong>scalable cloud architecture</strong>. 
-        I transform complex data into actionable insights and robust enterprise solutions.
+        Cloud Architect & Business Analyst. Delivering scalable, high-availability cloud infrastructures and data-driven business insights.
       </p>
       <div class="hero-actions reveal">
-        <a href="#experience" class="btn btn-primary" target="_blank">View My Impact</a>
-        <a href="resume.pdf" target="_blank" class="btn btn-primary">Download Resume</a>
+        <a href="#experience" class="btn btn-primary magnetic" target="_blank">View My Impact</a>
+        <a href="resume.pdf" target="_blank" class="btn btn-primary magnetic">Download Resume</a>
       </div>
     </div>
   </header>
@@ -79,14 +118,14 @@
     <div class="container">
       <div class="section-header reveal">
         <span class="section-label">01</span>
-        <h2 class="section-title scramble-target">Business Meets Technology</h2>
+        <h2 class="section-title scramble-target">Profile & Expertise</h2>
       </div>
       
       <div class="about-grid">
         <div class="about-text reveal">
-          <p class="lead">Operating at the exact intersection of strategic Business Analytics and enterprise Cloud Engineering.</p>
-          <p>Currently pursuing my MSc in Business Analytics at <strong>EBS Universität (Germany)</strong>. My foundation was built at <strong>Infosys</strong>, where I spent nearly 3 years architecting data pipelines and high-security microservices for top-tier UK banking clients.</p>
-          <p>Backed by 8 professional certifications across <strong>Google Cloud</strong>, <strong>AWS</strong>, and <strong>Microsoft Azure</strong>, I don't just write code—I design resilient systems that drive business growth, optimize operations, and solve real-world financial challenges.</p>
+          <p class="lead">Operating at the intersection of Business Analytics and Cloud Engineering.</p>
+          <p>MSc in Business Analytics candidate at <strong>EBS Universität (Germany)</strong>. Former Senior Systems Engineer at <strong>Infosys</strong> with a proven track record in architecting data pipelines and securing microservices for top-tier UK banking clients.</p>
+          <p>My work focuses on resilience, optimization, and delivering measurable business value through precision engineering and data analysis.</p>
         </div>
         
         <div class="stats-container reveal">
@@ -112,7 +151,7 @@
     <div class="container">
       <div class="section-header reveal">
         <span class="section-label">02</span>
-        <h2 class="section-title scramble-target">Professional Impact</h2>
+        <h2 class="section-title scramble-target">Professional Experience</h2>
       </div>
 
       <div class="timeline">
@@ -161,12 +200,40 @@
     </div>
   </section>
 
+  
+  <!-- PROJECTS (COMING SOON) -->
+  <section class="section" id="projects">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">03</span>
+        <h2 class="section-title scramble-target">Selected Projects</h2>
+      </div>
+
+      <div class="terminal-box reveal magnetic">
+        <div class="terminal-header">
+          <span class="term-dot close"></span>
+          <span class="term-dot min"></span>
+          <span class="term-dot max"></span>
+          <span class="term-title">bash -- ~kalakota/projects</span>
+        </div>
+        <div class="terminal-body">
+          <p><span class="term-prompt">kalakota@ebs:~$</span> ./fetch_projects.sh</p>
+          <p class="term-output typing-effect" data-text="[INFO] Establishing secure connection to remote data lake..."></p>
+          <p class="term-output typing-effect delay-1" data-text="[INFO] Fetching infrastructure diagrams and analytical models..."></p>
+          <p class="term-output term-error typing-effect delay-2" data-text="[WARN] ERR_DEPLOYMENT_IN_PROGRESS"></p>
+          <p class="term-output term-success typing-effect delay-3" data-text="[SYS] Projects are currently being compiled for public access."></p>
+          <p class="term-prompt-line delay-4"><span class="term-prompt">kalakota@ebs:~$</span> <span class="term-cursor">|</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- EDUCATION -->
   <section class="section" id="education">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-label">03</span>
-        <h2 class="section-title scramble-target">Academic Journey</h2>
+        <span class="section-label">04</span>
+        <h2 class="section-title scramble-target">Education</h2>
       </div>
 
       <div class="timeline">
@@ -228,8 +295,8 @@
   <section class="section section-dark" id="skills">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-label">04</span>
-        <h2 class="section-title scramble-target">Core Competencies</h2>
+        <span class="section-label">05</span>
+        <h2 class="section-title scramble-target">Technical Skills</h2>
       </div>
 
       <div class="bento-container reveal">
@@ -247,32 +314,39 @@
         </div>
       </div>
 
-      <div class="bento-container" style="margin-top: 2rem;">
-        
+            </div>
+    </div>
+  </section>
+
+  
+  <!-- CERTIFICATIONS -->
+  <section class="section" id="certifications">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">06</span>
+        <h2 class="section-title scramble-target">Certifications</h2>
+      </div>
+      <div class="certs-grid">
         <div class="bento-card reveal">
           <div class="cert-icon"><img src="images/google_cloud_logo_icon_170066.png" alt="GCP"></div>
-          <h4 style="font-family:var(--font-display); font-size:1.2rem; margin-bottom:0.5rem;">Google Cloud</h4>
-          <p style="color:var(--text-muted); font-size:0.9rem;">Professional Cloud Architect<br>Professional Data Engineer<br>Machine Learning Engineer</p>
+          <h4 style="font-family:var(--font-display); font-size:1.1rem; margin-bottom:0.5rem;">Google Cloud</h4>
+          <p style="color:var(--text-muted); font-size:0.85rem;">Professional Cloud Architect<br>Professional Data Engineer<br>Machine Learning Engineer</p>
         </div>
-
         <div class="bento-card reveal" style="transition-delay: 0.1s;">
-          <div class="cert-icon"><img src="images/Amazon_Web_Services-Logo.wine.png" alt="AWS"></div>
-          <h4 style="font-family:var(--font-display); font-size:1.2rem; margin-bottom:0.5rem;">Amazon Web Services</h4>
-          <p style="color:var(--text-muted); font-size:0.9rem;">Solutions Architect Associate</p>
+          <div class="cert-icon"><img src="images/Amazon_Web_Services-Logo.wine.png" alt="AWS" class="invert-light"></div>
+          <h4 style="font-family:var(--font-display); font-size:1.1rem; margin-bottom:0.5rem;">Amazon Web Services</h4>
+          <p style="color:var(--text-muted); font-size:0.85rem;">Solutions Architect Associate</p>
         </div>
-
         <div class="bento-card reveal" style="transition-delay: 0.2s;">
-          <div class="cert-icon"><img src="images/Microsoft-logo_rgb_c-wht-1536x688.png" alt="Azure"></div>
-          <h4 style="font-family:var(--font-display); font-size:1.2rem; margin-bottom:0.5rem;">Microsoft Azure</h4>
-          <p style="color:var(--text-muted); font-size:0.9rem;">AI Fundamentals<br>Data Fundamentals<br>Azure Fundamentals</p>
+          <div class="cert-icon"><img src="images/Microsoft-logo_rgb_c-wht-1536x688.png" alt="Azure" class="invert-light"></div>
+          <h4 style="font-family:var(--font-display); font-size:1.1rem; margin-bottom:0.5rem;">Microsoft Azure</h4>
+          <p style="color:var(--text-muted); font-size:0.85rem;">AI Fundamentals<br>Data Fundamentals<br>Azure Fundamentals</p>
         </div>
-
         <div class="bento-card reveal" style="transition-delay: 0.3s;">
           <div class="cert-icon"><div class="icon-pmi">P</div></div>
-          <h4 style="font-family:var(--font-display); font-size:1.2rem; margin-bottom:0.5rem;">PMI Institute</h4>
-          <p style="color:var(--text-muted); font-size:0.9rem;">Project Management Certificate</p>
+          <h4 style="font-family:var(--font-display); font-size:1.1rem; margin-bottom:0.5rem;">PMI Institute</h4>
+          <p style="color:var(--text-muted); font-size:0.85rem;">Project Management Certificate</p>
         </div>
-
       </div>
     </div>
   </section>
@@ -281,8 +355,8 @@
   <section class="section" id="contact" style="padding-bottom: 0; border-bottom: none;">
     <div class="container">
       <div class="section-header reveal" style="margin-bottom: 3rem;">
-        <span class="section-label">05</span>
-        <h2 class="section-title scramble-target">Let's Connect</h2>
+        <span class="section-label">07</span>
+        <h2 class="section-title scramble-target">Contact</h2>
       </div>
       <p class="reveal" style="font-size:1.2rem; color:var(--text-muted); max-width:600px; margin-bottom: 3rem;">
         Currently based in Eltville am Rhein, Germany. Open to roles where high-availability engineering meets data-driven business strategy.
@@ -320,6 +394,35 @@
     </div>
   </footer>
 
+  <!-- COMMAND PALETTE -->
+  <div class="cmd-palette-backdrop" id="cmdBackdrop">
+    <div class="cmd-palette" id="cmdPalette">
+      <div class="cmd-header">
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="var(--text-muted)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" id="cmdInput" placeholder="Type a command or search..." autocomplete="off">
+      </div>
+      <div class="cmd-results" id="cmdResults">
+        <!-- Populated via JS -->
+      </div>
+      <div class="cmd-footer">
+        <div class="cmd-footer-keys">
+          <span><kbd>↑</kbd> <kbd>↓</kbd> Navigate</span>
+          <span><kbd>↵</kbd> Select</span>
+          <span><kbd>ESC</kbd> Close</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script src="script.v2.js"></script>
+
+  <!-- REAL-TIME METRICS DASHBOARD -->
+  <div id="metricsDashboard" class="metrics-dashboard magnetic">
+    <div class="metric-row"><span>CPU_LOAD</span> <span id="cpuMetric">[||........] 12%</span></div>
+    <div class="metric-row"><span>MEM_ALLOC</span> <span id="memMetric">[|.........] 0%</span></div>
+    <div class="metric-row"><span>NETWORK</span> <span id="netMetric">IDLE</span></div>
+    <div class="metric-row"><span>SYS_STATUS</span> <span style="color:#27c93f">OPTIMAL</span></div>
+  </div>
+
 </body>
 </html>
