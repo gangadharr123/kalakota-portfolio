@@ -1,41 +1,88 @@
 /**
- * GANGADHAR KALAKOTA - Portfolio Interactivity
- * High-performance, professional animations
+ * GANGADHAR KALAKOTA - Neo-Brutalist Interactivity
+ * Focus: High-performance, quirky/editorial data flow
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+
+  // ── 1. CUSTOM CURSOR (Quirky Tech Feel) ──────────────────────────
+  const cursor = document.getElementById('cursorDot');
   
-  // ── 1. MESH BACKGROUND INTERACTION ──────────────────────────────
-  const meshBg = document.createElement('div');
-  meshBg.className = 'mesh-bg';
-  meshBg.innerHTML = '<div class="mesh-glow" id="meshGlow"></div>';
-  document.body.prepend(meshBg);
+  if (window.matchMedia("(pointer: fine)").matches && cursor) {
+    document.addEventListener('mousemove', (e) => {
+      cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+    });
 
-  const meshGlow = document.getElementById('meshGlow');
-  let mouseX = 0, mouseY = 0;
-  let glowX = 0, glowY = 0;
+    const interactables = document.querySelectorAll('a, button, .stat-box, .bento-card, .contact-link');
+    interactables.forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
+    });
+  } else if (cursor) {
+    cursor.style.display = 'none'; // Hide on touch devices
+  }
 
-  window.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
+  // ── 2. DATA PIPELINE (Scroll Progress Hook) ─────────────────────
+  const pipelineProgress = document.getElementById('pipelineProgress');
+  
+  const updatePipeline = () => {
+    const scrollPos = window.scrollY;
+    const totalHeight = document.body.scrollHeight - window.innerHeight;
+    const progress = (scrollPos / totalHeight) * 100;
+    
+    if (pipelineProgress) {
+      pipelineProgress.style.height = `${progress}%`;
+    }
+  };
+  
+  window.addEventListener('scroll', updatePipeline, { passive: true });
+  updatePipeline(); // Init
+
+  // ── 3. SCRAMBLE TEXT EFFECT (Hacking Reveal) ────────────────────
+  const chars = '!<>-_\\/[]{}—=+*^?#_';
+  
+  const scrambleText = (element) => {
+    const originalText = element.innerText;
+    let iterations = 0;
+    const maxIterations = 15;
+    
+    const interval = setInterval(() => {
+      element.innerText = originalText.split('').map((char, index) => {
+        if(index < iterations) {
+          return originalText[index];
+        }
+        return chars[Math.floor(Math.random() * chars.length)];
+      }).join('');
+      
+      if(iterations >= originalText.length) {
+        clearInterval(interval);
+        element.innerText = originalText; // Reset to ensure exact match
+      }
+      
+      iterations += 1/3;
+    }, 30);
+  };
+
+  // Scramble Nav Links on hover
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('mouseenter', function() {
+      scrambleText(this);
+    });
   });
 
-  function animateMesh() {
-    glowX += (mouseX - glowX) * 0.05;
-    glowY += (mouseY - glowY) * 0.05;
-    
-    if (meshGlow) {
-      meshGlow.style.transform = `translate(${glowX - window.innerWidth/2}px, ${glowY - window.innerHeight/2}px)`;
-    }
-    requestAnimationFrame(animateMesh);
-  }
-  animateMesh();
-
-  // ── 2. REVEAL ON SCROLL ──────────────────────────
+  // ── 4. REVEAL ON SCROLL (Snappy) ────────────────────────────────
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
+        
+        // Trigger scramble if it's a target
+        const scrambleTarget = entry.target.classList.contains('scramble-target') ? entry.target : entry.target.querySelector('.scramble-target');
+        
+        if (scrambleTarget && !scrambleTarget.dataset.scrambled) {
+          scrambleText(scrambleTarget);
+          scrambleTarget.dataset.scrambled = "true"; // Only scramble once on reveal
+        }
       }
     });
   }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
@@ -44,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
     revealObserver.observe(el);
   });
 
-  // ── 3. MOBILE MENU ──────────────────────────────────────────
+  // ── 5. MOBILE MENU ──────────────────────────────────────────────
   const navToggle = document.getElementById('navToggle');
   const mobileMenu = document.getElementById('mobileMenu');
   const mobileLinks = document.querySelectorAll('.mobile-link');
@@ -63,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ── 4. NAV SCROLL STATE ──────────────────────────────────────────
+  // ── 6. NAV SCROLL STATE ─────────────────────────────────────────
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => {
     if (nav) {
@@ -71,45 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }, { passive: true });
 
-  // ── 5. TYPING EFFECT ──────────────────────────────────────────────
-  const typeTarget = document.getElementById('typewriter');
-  if (typeTarget) {
-    const lines = [
-      { text: "Hema Sai", tag: "" },
-      { text: "Gangadhar Reddy", tag: "accent" },
-      { text: "Kalakota", tag: "" }
-    ];
-    let lineIdx = 0;
-    let charIdx = 0;
-    
-    function type() {
-      if (lineIdx < lines.length) {
-        if (charIdx === 0) {
-          let el = document.createElement('span');
-          if (lines[lineIdx].tag) el.className = lines[lineIdx].tag;
-          typeTarget.appendChild(el);
-        }
-        
-        let currentEl = typeTarget.children[lineIdx * 2];
-        
-        if (charIdx < lines[lineIdx].text.length) {
-          currentEl.textContent += lines[lineIdx].text.charAt(charIdx);
-          charIdx++;
-          setTimeout(type, 50 + Math.random() * 40);
-        } else {
-          if (lineIdx < lines.length - 1) {
-            typeTarget.appendChild(document.createElement('br'));
-          }
-          lineIdx++;
-          charIdx = 0;
-          setTimeout(type, 250);
-        }
-      }
-    }
-    setTimeout(type, 800);
-  }
-
-  // ── 6. SMOOTH ANCHOR LINKS ──────────────────────────────────────
+  // ── 7. SMOOTH ANCHOR LINKS ──────────────────────────────────────
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       const targetId = this.getAttribute('href');
