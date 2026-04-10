@@ -214,7 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
     { id: 'projects', label: 'View Projects', action: () => document.querySelector('#projects').scrollIntoView(), icon: '💻' },
     { id: 'education', label: 'View Education', action: () => document.querySelector('#education').scrollIntoView(), icon: '🎓' },
     { id: 'skills', label: 'View Expertise', action: () => document.querySelector('#skills').scrollIntoView(), icon: '⚡' },
-    { id: 'resume', label: 'Download CV', action: () => window.open('resume.pdf', '_blank'), icon: '📄' },
+    { id: 'resume', label: 'Download CV', action: () => window.open('/resume.pdf', '_blank'), icon: '📄' },
     { id: 'email', label: 'Send Email', action: () => window.location.href = 'mailto:gangadharr123@gmail.com', icon: '✉️' },
     { id: 'linkedin', label: 'View LinkedIn', action: () => window.open('https://linkedin.com/in/gangadharr123', '_blank'), icon: '🔗' },
     { id: 'theme', label: 'Toggle Theme', action: () => themeToggleBtn.click(), icon: '🌓' }

@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet" />
   
-  <link rel="stylesheet" href="styles.v2.css" />
+  <link rel="stylesheet" href="/src/style.css" />
   <script>
     document.documentElement.classList.add('js-enabled');
     if (localStorage.getItem('theme') === 'light' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: light)').matches)) {
@@ -62,7 +62,7 @@
                 <li><a href="#projects" data-scramble="PROJECTS">PROJECTS</a></li>
         <li><a href="#education" data-scramble="EDUCATION">EDUCATION</a></li>
         <li><a href="#skills" data-scramble="EXPERTISE">EXPERTISE</a></li>
-        <li><a href="resume.pdf" class="nav-cta magnetic" target="_blank">DOWNLOAD CV</a></li>
+        <li><a href="/resume.pdf" class="nav-cta magnetic" target="_blank">DOWNLOAD CV</a></li>
       </ul>
       <div class="nav-utilities" style="display: flex; gap: 1rem; align-items: center; margin-left: 2rem;">
         <button class="icon-btn" id="themeToggle" aria-label="Toggle theme">
@@ -86,7 +86,7 @@
     <a href="#projects" class="mobile-link">PROJECTS</a>
     <a href="#education" class="mobile-link">EDUCATION</a>
     <a href="#skills" class="mobile-link">EXPERTISE</a>
-    <a href="resume.pdf" class="mobile-link" style="color: var(--accent)" target="_blank">DOWNLOAD CV</a>
+    <a href="/resume.pdf" class="mobile-link" style="color: var(--accent)" target="_blank">DOWNLOAD CV</a>
   </div>
 
   <!-- HERO -->
@@ -108,7 +108,7 @@
       </p>
       <div class="hero-actions reveal">
         <a href="#experience" class="btn btn-primary magnetic" target="_blank">View My Impact</a>
-        <a href="resume.pdf" target="_blank" class="btn btn-primary magnetic">Download Resume</a>
+        <a href="/resume.pdf" target="_blank" class="btn btn-primary magnetic">Download Resume</a>
       </div>
     </div>
   </header>
@@ -159,7 +159,7 @@
           <div class="timeline-meta">
             <span class="timeline-date">Jul '24 — Dec '24</span>
             <div class="timeline-logo">
-              <img src="images/infosys-logo-jpeg.jpg" alt="Infosys">
+              <img src="/images/infosys-logo-jpeg.jpg" alt="Infosys">
             </div>
           </div>
           <div class="timeline-content">
@@ -180,7 +180,7 @@
           <div class="timeline-meta">
             <span class="timeline-date">Mar '22 — Jun '24</span>
             <div class="timeline-logo">
-              <img src="images/infosys-logo-jpeg.jpg" alt="Infosys">
+              <img src="/images/infosys-logo-jpeg.jpg" alt="Infosys">
             </div>
           </div>
           <div class="timeline-content">
@@ -241,7 +241,7 @@
           <div class="timeline-meta">
             <span class="timeline-date">2025 — Expected 2026</span>
             <div class="timeline-logo">
-              <img src="images/ebs_universitt_fr_wirtschaft_und_recht_logo.jpeg" alt="EBS">
+              <img src="/images/ebs_universitt_fr_wirtschaft_und_recht_logo.jpeg" alt="EBS">
             </div>
           </div>
           <div class="timeline-content">
@@ -258,7 +258,7 @@
           <div class="timeline-meta">
             <span class="timeline-date">Jan 2025 — Jul 2025</span>
             <div class="timeline-logo">
-              <img src="images/spjimr logo.png" alt="SPJIMR">
+              <img src="/images/spjimr logo.png" alt="SPJIMR">
             </div>
           </div>
           <div class="timeline-content">
@@ -328,17 +328,17 @@
       </div>
       <div class="certs-grid">
         <div class="bento-card reveal">
-          <div class="cert-icon"><img src="images/google_cloud_logo_icon_170066.png" alt="GCP"></div>
+          <div class="cert-icon"><img src="/images/google_cloud_logo_icon_170066.png" alt="GCP"></div>
           <h4 style="font-family:var(--font-display); font-size:1.1rem; margin-bottom:0.5rem;">Google Cloud</h4>
           <p style="color:var(--text-muted); font-size:0.85rem;">Professional Cloud Architect<br>Professional Data Engineer<br>Machine Learning Engineer</p>
         </div>
         <div class="bento-card reveal" style="transition-delay: 0.1s;">
-          <div class="cert-icon"><img src="images/Amazon_Web_Services-Logo.wine.png" alt="AWS" class="invert-light"></div>
+          <div class="cert-icon"><img src="/images/Amazon_Web_Services-Logo.wine.png" alt="AWS" class="invert-light"></div>
           <h4 style="font-family:var(--font-display); font-size:1.1rem; margin-bottom:0.5rem;">Amazon Web Services</h4>
           <p style="color:var(--text-muted); font-size:0.85rem;">Solutions Architect Associate</p>
         </div>
         <div class="bento-card reveal" style="transition-delay: 0.2s;">
-          <div class="cert-icon"><img src="images/Microsoft-logo_rgb_c-wht-1536x688.png" alt="Azure" class="invert-light"></div>
+          <div class="cert-icon"><img src="/images/Microsoft-logo_rgb_c-wht-1536x688.png" alt="Azure" class="invert-light"></div>
           <h4 style="font-family:var(--font-display); font-size:1.1rem; margin-bottom:0.5rem;">Microsoft Azure</h4>
           <p style="color:var(--text-muted); font-size:0.85rem;">AI Fundamentals<br>Data Fundamentals<br>Azure Fundamentals</p>
         </div>
@@ -414,7 +414,7 @@
     </div>
   </div>
 
-  <script src="script.v2.js"></script>
+  <script type="module" src="/src/main.js"></script>
 
   <!-- REAL-TIME METRICS DASHBOARD -->
   <div id="metricsDashboard" class="metrics-dashboard magnetic">
