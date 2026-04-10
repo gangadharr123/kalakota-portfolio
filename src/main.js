@@ -118,19 +118,40 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }, { passive: true });
 
-  // ── 7. SMOOTH ANCHOR LINKS ──────────────────────────────────────
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  // ── 7. NAVIGATION & SMOOTH SCROLLING ────────────────────────────
+  // This logic handles BOTH desktop and mobile links
+  const allNavLinks = document.querySelectorAll('a[href^="#"]');
+  
+  allNavLinks.forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       const targetId = this.getAttribute('href');
-      if (targetId === '#') return;
+      if (targetId === '#' || !targetId.startsWith('#')) return;
       
-      const target = document.querySelector(targetId);
-      if (target) {
+      const targetElement = document.querySelector(targetId);
+      
+      if (targetElement) {
         e.preventDefault();
+        
+        // Close mobile menu if it's open
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navToggle = document.getElementById('navToggle');
+        if (mobileMenu && mobileMenu.classList.contains('open')) {
+          mobileMenu.classList.remove('open');
+          if (navToggle) navToggle.classList.remove('active');
+        }
+
+        // Perform scroll
+        const headerOffset = 90;
+        const elementPosition = targetElement.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
         window.scrollTo({
-          top: target.offsetTop - 80,
+          top: offsetPosition,
           behavior: 'smooth'
         });
+
+        // Update URL hash without jump
+        history.pushState(null, null, targetId);
       }
     });
   });
@@ -151,7 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function typeLine() {
       if (currentLine < lines.length) {
         const line = lines[currentLine];
-        
+
         if (!line.element.classList.contains('typing-cursor')) {
           line.element.classList.add('typing-cursor');
         }
@@ -159,7 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (currentChar === 0) {
           line.element.textContent = ''; // clear zero-width space
         }
-        
+
         if (currentChar < line.text.length) {
           line.element.textContent += line.text.charAt(currentChar);
           currentChar++;
@@ -168,21 +189,111 @@ document.addEventListener('DOMContentLoaded', () => {
           line.element.classList.remove('typing-cursor');
           currentLine++;
           currentChar = 0;
-          
+
           if (currentLine >= lines.length) {
-            line.element.classList.add('typing-cursor');
+            // Add cursor to the last line and keep it there
+            lines[lines.length - 1].element.classList.add('typing-cursor');
+            return;
           }
-          
-          setTimeout(typeLine, typingSpeed * 4); // Pause between lines
+
+          setTimeout(typeLine, typingSpeed * 3); // Faster pause between lines
         }
       }
     }
-
     // Start typing slightly after the reveal animation begins
     setTimeout(typeLine, 600); 
   }
 
 
+
+  // ── SYSTEM EVOLUTION (LEARNING CURVE) ──────────────────────────
+  const evoPath = document.getElementById('evolutionPath');
+  const evoNodes = document.querySelectorAll('.evo-node');
+  const evoDetails = {
+    mvgr: {
+      title: "PHASE_01: FOUNDATIONAL_KERNEL",
+      version: "v1.0.0",
+      input: "Raw curiosity in Information Technology; seeking the building blocks of computing.",
+      transformation: "Deep dive into Object-Oriented Programming and Software Architecture. Developed the ability to translate complex logic into functional code.",
+      output: ["Algorithmic Thinking", "Java/C++ Foundations", "Middleware Systems"]
+    },
+    infosys: {
+      title: "PHASE_02: SCALE_&_RESILIENCE",
+      version: "v2.1.0",
+      input: "Moving from academic theory to high-stakes UK Banking infrastructures.",
+      transformation: "Mastered Cloud (AWS/Azure) and Microservices. Learned to engineer for millions of transactions while maintaining 99.9% availability.",
+      output: ["AWS Infrastructure", "Microservices Security", "CI/CD Automation"]
+    },
+    spjimr: {
+      title: "PHASE_03: STRATEGIC_INTEGRATION",
+      version: "v3.5.0",
+      input: "Engineering expertise needing a bridge to global business strategy.",
+      transformation: "Acquired the 'Strategic OS'. Learned to value digital transformation through the lens of Finance, Operations, and Design Thinking.",
+      output: ["Business Strategy", "Digital Product Mgmt", "Project Leadership"]
+    },
+    ebs: {
+      title: "PHASE_04: INTELLIGENCE_LAYER",
+      version: "v4.0.0",
+      input: "A versatile profile ready for the AI-driven economy.",
+      transformation: "Specializing in ML, NLP, and FinTech at EBS. Fusing heavy data engineering with advanced predictive analytics.",
+      output: ["Machine Learning", "Natural Language Processing", "FinTech Innovation"]
+    }
+  };
+
+  const evoTitle = document.getElementById('evoPhaseTitle');
+  const evoVersion = document.getElementById('evoVersion');
+  const evoInput = document.getElementById('evoInput');
+  const evoTrans = document.getElementById('evoTransformation');
+  const evoOutput = document.getElementById('evoOutput');
+
+  // Trigger initial path draw
+  if (evoPath) {
+    setTimeout(() => {
+      evoPath.style.strokeDasharray = "1000";
+      evoPath.style.strokeDashoffset = "750";
+    }, 500);
+  }
+
+  evoNodes.forEach((node, index) => {
+    node.addEventListener('click', () => {
+      const phase = node.dataset.phase;
+      const data = evoDetails[phase];
+
+      // Update Active Node
+      evoNodes.forEach(n => n.classList.remove('active'));
+      node.classList.add('active');
+
+      // Update Path (Visual growth)
+      const offsets = ["750", "500", "250", "0"];
+      evoPath.style.strokeDashoffset = offsets[index];
+
+      // Update Content with a small "glitch" effect
+      const detailsBox = document.getElementById('evoDetails');
+      if (detailsBox) {
+        detailsBox.style.opacity = "0.5";
+        detailsBox.style.transform = "scale(0.98)";
+
+        setTimeout(() => {
+          if (evoTitle) evoTitle.textContent = data.title;
+          if (evoVersion) evoVersion.textContent = data.version;
+          if (evoInput) evoInput.textContent = data.input;
+          if (evoTrans) evoTrans.textContent = data.transformation;
+          
+          if (evoOutput) {
+            evoOutput.innerHTML = '';
+            data.output.forEach(item => {
+              const li = document.createElement('li');
+              li.textContent = item;
+              evoOutput.appendChild(li);
+            });
+          }
+
+          detailsBox.style.opacity = "1";
+          detailsBox.style.transform = "scale(1)";
+        }, 200);
+      }
+    });
+  });
 
   // ── 9. THEME TOGGLE ─────────────────────────────────────────────
   const themeToggleBtn = document.getElementById('themeToggle');
@@ -341,18 +452,27 @@ document.addEventListener('DOMContentLoaded', () => {
   if (statusText) {
     const statuses = [
       "Available in Germany",
+      "Bereit in Deutschland",
+      "Klaar voor actie",
       "Compiling pipelines...",
-      "Analyzing market data...",
-      "Deploying microservices...",
-      "Drinking coffee (zzz)..."
+      "Daten-Pipelines werden gebaut...",
+      "Optimizing neural nets...",
+      "Kaffee-Status: KRITISCH",
+      "Drinking excessive coffee...",
+      "Analyzing market shifts...",
+      "Deploying to the moon...",
+      "Debugging the matrix...",
+      "Cloud-Architectuur wordt geladen...",
+      "Analysing business value...",
+      "Systeem aan het optimaliseren...",
+      "Ready for deployment",
+      "Warten auf Input...",
+      "Data-gedreven besluitvorming"
     ];
-    let statusIndex = 0;
 
     setInterval(() => {
-      statusIndex = (statusIndex + 1) % statuses.length;
-      
-      // Typewriter effect for status change
-      const newStatus = statuses[statusIndex];
+      // Pick a random status
+      const newStatus = statuses[Math.floor(Math.random() * statuses.length)];
       let charIndex = 0;
       statusText.textContent = '';
       
